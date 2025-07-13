@@ -115,12 +115,3 @@ def logout_view(request):
 
     # Redirect to login or home page
     return redirect('home')  # or redirect('home')
-def Admin_Panel(request):
-    context = {
-        'total_sales': Order.objects.count(),
-        'total_users': User.objects.exclude(role='Admin').count(),
-        'total_products': Product.objects.count(),
-        'today_orders': Order.objects.filter(orderDate=timezone.now().date()).count(),
-    }
-
-    return render(request, 'adminPanel.html', context)
