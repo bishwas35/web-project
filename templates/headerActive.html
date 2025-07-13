@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panda Bubble Tea</title>
+  <link rel="stylesheet" href="/static/css/header.css">
+  <style>
+    /* Dropdown styles (add these or move them to header.css) */
+    .profile-dropdown {
+      position: relative;
+      display: inline-block;
+    }
+    .profile-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.8em;
+      color: white;
+    }
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: white;
+      min-width: 150px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .dropdown-content a {
+      color: #333;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+    }
+    .dropdown-content a:hover {
+      background-color: #f1f1f1;
+    }
+    .profile-dropdown.show .dropdown-content {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <div class="panda-icon">🐼</div>
+        <div class="logo-text">
+          <h1>Panda Bubble Tea</h1>
+          <p>Authentic Asian Flavors</p>
+        </div>
+      </div>
+
+      <nav>
+        <ul class="nav-menu" id="navMenu">
+          <li class="{% if request.path == '/home' %}active{% endif %}"><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="{% url 'about' %}">About</a></li>
+          <li><a href="{% url 'location' %}">Location</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="right-section">
+        <div class="bubble-tea-icons">
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+          <div class="bubble"></div>
+        </div>
+
+        <!-- Profile dropdown -->
+        <div class="profile-dropdown" id="profileDropdown">
+          <button class="profile-button" onclick="toggleProfileDropdown()">👤</button>
+          <div class="dropdown-content">
+            <a href="">View Profile</a>
+            <a href="{% url 'logout' %}">Logout</a>
+          </div>
+        </div>
+      </div>
+
+      <button class="mobile-menu-toggle" onclick="toggleMenu()">☰</button>
+    </div>
+  </header>
+
+  <script>
+    function toggleMenu() {
+      const navMenu = document.getElementById('navMenu');
+      navMenu.classList.toggle('active');
+    }
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        document.getElementById('navMenu').classList.remove('active');
+      });
+    });
+
+    // Add scroll effect to header
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 100) {
+        header.style.background = 'linear-gradient(135deg, rgba(44, 62, 80, 0.95) 0%, rgba(52, 73, 94, 0.95) 100%)';
+        header.style.backdropFilter = 'blur(10px)';
+      } else {
+        header.style.background = 'linear-gradient(135deg, #2c3e50 0%, #34495e 100%)';
+        header.style.backdropFilter = 'none';
+      }
+    });
+
+    // Toggle profile dropdown
+    function toggleProfileDropdown() {
+      const dropdown = document.getElementById('profileDropdown');
+      dropdown.classList.toggle('show');
+    }
+
+    // Close dropdown when clicking outside
+    window.onclick = function(event) {
+      if (!event.target.matches('.profile-button')) {
+        const dropdowns = document.getElementsByClassName('profile-dropdown');
+        for (let i = 0; i < dropdowns.length; i++) {
+          const openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+  </script>
+</body>
+</html>

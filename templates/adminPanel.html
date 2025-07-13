@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panda Bubble Tea - Admin Panel</title>
+    <link rel="stylesheet" href="/static/css/adminPanel.css">
+</head>
+<body>
+     {% extends 'base.html' %} {% block content %}
+    <div class="admin-container">
+        <!-- Header -->
+        <div class="admin-header">
+            <h1>🐼 Panda Bubble Tea Admin Panel</h1>
+            <p>Manage your bubble tea empire with ease</p>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-number" id="totalSales">{{ total_sales|default:"0" }}</div>
+                <div class="stat-label">Total Sales</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-number" id="totalUsers">{{ total_users|default:"0" }}</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">🧋</div>
+                <div class="stat-number" id="totalProducts">{{ total_products|default:"0" }}</div>
+                <div class="stat-label">Total Products</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-number" id="todayOrders">{{ today_orders|default:"0" }}</div>
+                <div class="stat-label">Today's Orders</div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Action Buttons Section -->
+            <div class="panel-section">
+                <h2 class="section-title">🔧 Admin Actions</h2>
+                <div class="admin-actions">
+                    <button class="btn btn-primary" onclick="addProduct()">➕ Add Product</button>
+                    <button class="btn btn-secondary" onclick="editProduct()">✏️ Edit Product</button>
+                    <button class="btn btn-info" onclick="generateReport()">📊 Generate Report</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // CSRF Token for Django
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        const csrftoken = getCookie('csrftoken');
+
+        // Button Functions
+        function addProduct() {
+            alert('Add Product functionality - redirect to add product page');
+            // You can redirect to add product page here
+            // window.location.href = '/admin/add-product/';
+        }
+
+        function editProduct() {
+            alert('Edit Product functionality - redirect to manage products page');
+            // You can redirect to manage products page here
+            // window.location.href = '/admin/manage-products/';
+        }
+
+        function generateReport() {
+            alert('Generate Report functionality - redirect to reports page');
+            // You can redirect to reports page here
+            // window.location.href = '/admin/reports/';
+        }
+    </script>
+    {% endblock %}
+</body>
+</html>

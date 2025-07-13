@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Panda Bubble Tea - Authentic Asian Flavors</title>
+    <link rel="stylesheet" href="/static/css/home.css" />
+  </head>
+  <body>
+    {% extends 'base.html' %} {% block content %}
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <h1>🐼 Welcome to Panda Bubble Tea {{details|default:""}}</h1>
+        <p>
+          Experience the authentic taste of Asia with our premium bubble tea
+          collection. Made fresh daily with the finest ingredients and love!
+        </p>
+        <div class="cta-buttons">
+          <a href="#menu" class="cta-btn">Order Now</a>
+          <a href="#about" class="cta-btn secondary">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+      <div class="features-container">
+        <h2 class="section-title">Why Choose Panda Bubble Tea?</h2>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">🧋</div>
+            <h3>Premium Quality</h3>
+            <p>
+              Made with the finest tea leaves and fresh ingredients. Every cup
+              is crafted with care and attention to detail.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🚚</div>
+            <h3>Fast Delivery</h3>
+            <p>
+              Get your favorite bubble tea delivered to your door in 30-45
+              minutes. Free delivery on orders over $25!
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🎯</div>
+            <h3>Customizable</h3>
+            <p>
+              Choose your sweetness level, ice amount, and toppings. Create your
+              perfect bubble tea experience every time.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">🌟</div>
+            <h3>Fresh Daily</h3>
+            <p>
+              All our teas are brewed fresh every morning, and our boba pearls
+              are cooked to perfection throughout the day.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Popular Drinks Section -->
+    <section class="popular-drinks">
+      <div class="features-container">
+        <h2 class="section-title">Popular Favorites</h2>
+        <div class="drinks-grid">
+          <div class="drink-card">
+            <div class="drink-image">🧋</div>
+            <div class="drink-info">
+              <h3>Classic Milk Tea</h3>
+              <p>
+                Our signature black tea with creamy milk and chewy tapioca
+                pearls
+              </p>
+              <div class="drink-price">$5.99</div>
+            </div>
+          </div>
+          <div class="drink-card">
+            <div class="drink-image">🥭</div>
+            <div class="drink-info">
+              <h3>Mango Fruit Tea</h3>
+              <p>
+                Refreshing green tea with fresh mango pieces and popping boba
+              </p>
+              <div class="drink-price">$6.49</div>
+            </div>
+          </div>
+          <div class="drink-card">
+            <div class="drink-image">🍓</div>
+            <div class="drink-info">
+              <h3>Strawberry Matcha</h3>
+              <p>Premium matcha powder with fresh strawberries and cream</p>
+              <div class="drink-price">$6.99</div>
+            </div>
+          </div>
+          <div class="drink-card">
+            <div class="drink-image">🥥</div>
+            <div class="drink-info">
+              <h3>Coconut Taro</h3>
+              <p>Creamy taro flavor with coconut milk and crystal boba</p>
+              <div class="drink-price">$6.49</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+      <div class="newsletter-container">
+        <h2>🎉 Stay Updated!</h2>
+        <p>
+          Be the first to know about new flavors, special offers, and exclusive
+          deals!
+        </p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email address" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+
+    {} {% endblock %}
+  </body>
+</html>

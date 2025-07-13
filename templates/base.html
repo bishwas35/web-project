@@ -1,0 +1,10 @@
+{% if request.session.user_id %}
+    {% include "headeractive.html" %}
+{% else %}
+    {% include "header.html" %}
+{% endif %}
+
+{% block content %}
+{% endblock %}
+
+{% include "footer.html" %}

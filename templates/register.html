@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Panda Bubble Tea</title>
+    <link rel="stylesheet" href="/static/css/register.css">
+</head>
+<body>
+    <div class="registration-container">
+        <div class="registration-header">
+            <span class="panda-icon">🐼</span>
+            <h1>Join Panda Bubble Tea!</h1>
+            <p>Create your account and start enjoying delicious bubble tea</p>
+        </div>
+        
+        <div class="registration-form">
+            <div class="success-message" id="successMessage">
+                🎉 Welcome to the Panda family! Registration successful!
+            </div>
+            
+            <form id="registrationForm" method="POST" action="{% url 'register' %}">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" name="firstName" value = "{{firstName}}" placeholder="Enter your first name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" name="lastName" value = "{{lastName}}" placeholder="Enter your last name" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                     {% if error %}
+                        <div class="error-message" style="color: red; margin-top: 5px;">
+                            {{ error }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="address" id="address" name="address" value = "{{address}}" placeholder="Enter your address" required>
+                </div>
+                
+                
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" value = "{{phone}}" placeholder="Enter your phone number" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" value = "{{dob}}" name="dob" required>
+                </div>
+                       <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Create a strong password" >
+                    <div class="password-strength" id="passwordStrength"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required>
+                    <div class="password-match" id="passwordMatch"></div>
+                </div>
+                <button type="submit" class="submit-btn">
+                    Create Account
+                </button>
+            </form>
+            
+            <div class="login-link">
+                Already have an account? <a href="{% url 'login' %}">Sign In</a>
+            </div>
+        </div>
+    </div>
+      <script>
+        const passwordInput = document.getElementById('password');
+        const confirmPasswordInput = document.getElementById('confirmPassword');
+        const passwordStrength = document.getElementById('passwordStrength');
+        const passwordMatch = document.getElementById('passwordMatch');
+        const form = document.getElementById('registrationForm');
+
+        // Check password length (6-8 characters)
+        function checkPasswordLength(password) {
+            if (password.length < 6) {
+                return { valid: false, message: 'Password must be at least 6 characters' };
+            } else if (password.length > 8) {
+                return { valid: false, message: 'Password must be less than 8 characters' };
+            } else {
+                return { valid: true };
+            }
+        }
+
+        // Check if passwords match
+        function checkPasswordMatch() {
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+            
+            if (confirmPassword === '') {
+                passwordMatch.textContent = '';
+                return false;
+            }
+            
+            if (password === confirmPassword) {
+                passwordMatch.textContent = '';
+                passwordMatch.style.color = 'green';
+                return true;
+            } else {
+                passwordMatch.textContent = 'Passwords do not match';
+                passwordMatch.style.color = 'red';
+                return false;
+            }
+        }
+
+        // Password input validation
+        passwordInput.addEventListener('input', function() {
+            const password = this.value;
+            
+            if (password === '') {
+                passwordStrength.textContent = '';
+            } else {
+                const result = checkPasswordLength(password);
+                passwordStrength.textContent = result.message;
+                passwordStrength.style.color = result.valid ? 'green' : 'red';
+            }
+            
+            // Check match when password changes
+            if (confirmPasswordInput.value !== '') {
+                checkPasswordMatch();
+            }
+        });
+
+        // Confirm password input validation
+        confirmPasswordInput.addEventListener('input', function() {
+            checkPasswordMatch();
+        });
+
+        // Form submission validation
+        form.addEventListener('submit', function(e) {
+            const password = passwordInput.value;
+            const confirmPassword = confirmPasswordInput.value;
+            
+            // Check password length
+            if (password.length < 6 || password.length > 8) {
+                e.preventDefault();
+                alert('Password must be between 6 and 8 characters long!');
+                return;
+            }
+            
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                e.preventDefault();
+                alert('Passwords do not match!');
+                return;
+            }
+        });
+    </script>
+</body>
+</html>

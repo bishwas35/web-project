@@ -1,0 +1,239 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ff8c42 0%, #ff6b35 100%);
+    min-height: 100vh;
+}
+
+.header {
+    background: linear-gradient(135deg, #e65100 0%, #ff6d00 100%);
+    padding: 1rem 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.panda-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(45deg, #fff 0%, #f8f9fa 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    animation: bounce 2s infinite;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.logo-text {
+    color: #fff;
+}
+
+.logo-text h1 {
+    font-size: 2.2rem;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(45deg, #ffeb3b, #ff9800);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.logo-text p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-top: -5px;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-menu li a:hover {
+    color: #ffeb3b;
+    text-shadow: 0 0 8px rgba(255, 235, 59, 0.5);
+    transform: scale(1.05);
+}
+
+
+
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.bubble-tea-icons {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.login-section {
+    display: flex;
+    align-items: center;
+}
+
+.login-btn {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.7rem 1.5rem;
+    background: linear-gradient(45deg, #ff8c42, #ff6b35);
+    border-radius: 30px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 140, 66, 0.3);
+    border: 2px solid transparent;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 140, 66, 0.5);
+    border-color: #ffeb3b;
+    background: linear-gradient(45deg, #ff6b35, #ff8c42);
+}
+
+.bubble {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    animation: float 3s ease-in-out infinite;
+}
+
+.bubble:nth-child(1) {
+    background: #ff5722;
+    animation-delay: -1s;
+}
+
+.bubble:nth-child(2) {
+    background: #ff9800;
+    animation-delay: -2s;
+}
+
+.bubble:nth-child(3) {
+    background: #ffeb3b;
+    animation-delay: -3s;
+}
+
+.bubble:nth-child(4) {
+    background: #ff6d00;
+    animation-delay: -4s;
+}
+
+.bubble:nth-child(5) {
+    background: #e65100;
+    animation-delay: -5s;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0 1rem;
+    }
+
+    .logo-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .nav-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(230, 81, 0, 0.95);
+        flex-direction: column;
+        padding: 1rem;
+        backdrop-filter: blur(10px);
+    }
+
+    .nav-menu.active {
+        display: flex;
+    }
+
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .right-section {
+        gap: 0.5rem;
+    }
+
+    .bubble-tea-icons {
+        gap: 0.5rem;
+    }
+
+    .login-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+}
+header .active {
+    color: yellow;
+
+}
